@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CONTACT DETAIL</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/newstylesheet.css">
+    <script>
+        function validateForm() {
+            let firstName = document.getElementById('first-name').value;
+            let lastName = document.getElementById('last-name').value;
+            let email = document.getElementById('email').value;
+            let dob = document.getElementById('dob').value;
+            let phone = document.getElementById('phone').value;
+            let message = document.getElementById('message').value;
+            
+            let datePattern = /^\d{2}\/\d{2}\/\d{2}$/;
+            let emailPattern = /\S+@\S+\.\S+/; 
+
+            if (firstName.length < 5) {
+                alert("First name should be at least 5 characters.");
+                return false;
+            }
+            if (lastName.length < 5) {
+                alert("Last name should be at least 5 characters.");
+                return false;
+            }
+            if (!emailPattern.test(email)) {
+                alert("Email should contain a domain name with '@'.");
+                return false;
+            }
+            if (!datePattern.test(dob)) {
+                alert("Date must be in dd/mm/yy format.");
+                return false;
+            }
+            if (phone.length != 10) {
+                alert("Phone must contain 10 digits.");
+                return false;
+            }
+            if (message.replace(/ /g,'').length < 50) { // Regex to remove spaces for alphabet count
+                alert("Message must be of at least 50 alphabets.");
+                return false;
+            }
+
+            // If all validations pass
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return validateForm()">
+        <fieldset>
+            <legend>CONTACT US HERE</legend>
+            <label>FIRST NAME</label>
+            <input id="first-name" type="text" placeholder="Enter your First Name" required><br><br>
+            <label>LAST-NAME</label>
+            <input id="last-name" type="text" placeholder="Enter your Last Name" required><br><br>
+            <label>EMAIL</label>
+            <input id="email" type="email" placeholder="Enter your Email" required><br><br>
+            <label>Date Of Birth</label>
+            <input id="dob" type="text" placeholder="DD/MM/YY" required><br><br>
+            <label>Phone</label>
+            <input id="phone" type="tel" placeholder="Enter your phone number" required><br><br>
+            <label>Message</label>
+            <textarea id="message" placeholder="ENTER A MESSAGE HERE AND WE WILL REACH OUT TO YOU SHORTLY!" required></textarea><br><br>
+            <button type="submit">Submit Button</button>
+        </fieldset>
+    </form>
+</body>
+</html>

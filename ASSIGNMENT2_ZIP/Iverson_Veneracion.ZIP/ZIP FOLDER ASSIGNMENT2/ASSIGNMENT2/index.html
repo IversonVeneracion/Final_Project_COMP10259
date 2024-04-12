@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flying Fish</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="stylepage.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+       $(document).ready(function() {
+    var navOffset = $('.nav').offset().top;
+
+    $(window).scroll(function() {
+        var scrollPos = $(window).scrollTop();
+
+        if (scrollPos >= navOffset) {
+            $('.nav').css({
+                'position': 'fixed',
+                'top': '0',
+                'width': '100%'
+            });
+        } else {
+            $('.nav').css({
+                'position': 'static'
+            });
+        }
+    });
+});
+
+
+$(document).ready(function() {
+    var slideshowInterval;
+    var current = 0;
+    var images = $('.gallery-section img');
+    var isSlideshowRunning = false;
+
+    function showNextImage() {
+        $(images[current]).fadeOut(function() {
+            current = (current + 1) % images.length;
+            $(images[current]).fadeIn();
+        });
+    }
+
+    function startSlideshow() {
+        if (!isSlideshowRunning) {
+            slideshowInterval = setInterval(showNextImage, 3000);
+            isSlideshowRunning = true;
+            $('.control-slideshow').text('Stop Slideshow');
+            $('.gallery-content').show();
+        }
+    }
+
+    function stopSlideshow() {
+        clearInterval(slideshowInterval);
+        isSlideshowRunning = false;
+        $('.control-slideshow').text('Start Slideshow');
+        $('.gallery-content').hide();
+    }
+
+    $('.control-slideshow').click(function() {
+        if (isSlideshowRunning) {
+            stopSlideshow();
+        } else {
+            startSlideshow();
+        }
+    });
+
+    // Initially hide images and setup the slideshow
+    $('.gallery-section img').hide();
+    $(images[0]).show(); // Show the first image initially
+});
+
+
+    </script>
+</head>
+<body>
+<!-- Header Start -->
+<header class="header">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <div class="fish-name">
+                <a href="index.html">Flying Fish</a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#predators">Prey & Predators</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#count">World Count</a></li>
+                    <li><a href="honesty.html">Honesty Declaration</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+<!-- Header End -->
+
+<!-- Home Section Start -->
+<section class="home-section" id="home">
+    <h1>Welcome to the Fascinating World of Flying Fish!</h1>
+    <p>Explore the miraculous abilities of these unique creatures of the sea and sky.</p>
+</section>
+<!-- Home Section End -->
+
+<!-- About Section Start -->
+<section class="about-section clearfix" id="about">
+    <h2>About Flying Fish</h2>
+    <img src="../ASSIGNMENT2/img/flying_fish_in_action.jpg" alt="Flying Fish in Action" style="width:50%;float:left;margin-right:20px;">
+    <p>The Exocoetidae are a family of marine ray-finned fish in the order Beloniformes, known colloquially as flying fish or flying cod. About 64 species are grouped in seven genera. While they cannot fly in the same way a bird does, flying fish can make powerful, self-propelled leaps out of the water where their long wing-like fins enable gliding for considerable distances above the water's surface. This behavior is primarily thought to be an escape mechanism from underwater predators, which include swordfish, mackerel, tuna, and marlin, among others. These periods of flight, however, expose them to avian predators such as frigate birds. Barbados is known as "the land of the flying fish," and the fish is one of the national symbols of the country. The Exocet missile is named after them, as variants are launched from underwater, and take a low trajectory, skimming the surface, before striking their targets.</p>
+</section>
+<!-- About Section End -->
+
+<!-- Prey & Predators Section Start -->
+<section class="predator-section clearfix" id="predators">
+    <h2>Prey & Predators</h2>
+    <p><video class="myvid" autoplay muted loop>
+		<source src="../ASSIGNMENT2/img/Flying Fish Picked Off From Above And Below _ The Hunt _ BBC Earth.mp4" type="video/mp4">
+	</video>
+    Flying fish primarily feed on plankton, while their own predators are a more significant concern, leading to their unique adaptation of 'flying'. Predators such as the swordfish, tuna, and marlin hunt these gliding creatures. Interestingly, flying fish can be found in the warm waters of all oceans, particularly in tropical and subtropical latitudes. Their ability to glide above the surface helps them evade underwater predators but makes them vulnerable to birds. In this constant battle for survival, the flying fish's adaptations showcase the marvels of evolutionary biology. </p>
+    
+</section>
+<!-- Prey & Predators Section End -->
+
+<!-- Gallery Section Start -->
+<section class="gallery-section" id="gallery">
+    <h2>Gallery</h2>
+    <p>Discover the beauty of flying fish through our curated gallery. Witness the grace with which these creatures navigate both the sea and the sky.</p>
+    <div class="slideshow-control">
+        <button class="control-slideshow">Start Slideshow</button>
+    </div>
+    <div class="clearfix gallery-content">
+        <img src="../ASSIGNMENT2/img/group.jpg" alt="Gallery Image 1">
+        <img src="../ASSIGNMENT2/img/Journal_of_Entomology_and_Zoology_(1913)_(14803517523).jpg" alt="Gallery Image 2">
+        <img src="../ASSIGNMENT2/img/size.jpg" alt="Gallery Image 3">
+    </div>
+</section>
+
+
+<!-- Gallery Section End -->
+<section class="did-you-know">
+    <h3>Did You Know?</h3>
+    <p>Flying fish can glide over the water for distances up to 400 meters (1,312 feet), which is longer than the length of four football fields!</p>
+    <p>These fascinating creatures have been known to use their gliding ability not just to escape predators, but also to travel faster and conserve energy as they search for food.</p>
+    <p>The longest recorded flight of a flying fish was 45 seconds. During this time, it covered a considerable distance, showcasing the remarkable efficiency of its adaptations.</p>
+</section>
+
+<!-- World Count Section Start -->
+<section class="count-section" id="count">
+    <h2>World Count</h2>
+    <table>
+        <tr>
+            <th>Location</th>
+            <th>Estimated Population</th>
+        </tr>
+        <tr>
+            <td>Atlantic Ocean</td>
+            <td>1,200,000</td>
+        </tr>
+        <tr>
+            <td>Pacific Ocean</td>
+            <td>900,000</td>
+        </tr>
+        <tr>
+            <td>Indian Ocean</td>
+            <td>700,000</td>
+        </tr>
+    </table>
+</section>
+<!-- World Count Section End -->
+
+<!-- Footer Start -->
+<footer>
+    <p>Flying Fish &copy; 2024 | A marvel of nature</p>
+</footer>
+<!-- Footer End -->
+</body>
+</html>
